@@ -90,9 +90,23 @@ $(function() {
 	
 });
 
+$(function() {
+	
+	$(".banner_contents img").on("click" , function(){
+		var prodNo = $(this).data("param4");
+		if ( ${param.menu=="search"}) {
+			self.location = "/product/getProduct?prodNo="+prodNo+"&menu=search";
+		};
+
+		if ( ${param.menu=="manage"}) {
+			self.location = "/product/updateProduct?prodNo="+prodNo+"&menu=manage";
+		};
+		});
+	});
+
   $(function() {
 	
-			$("img").on("click" , function(){
+			$(".centered img").on("click" , function(){
 				var prodNo = $(this).data("param1");
 				if ( ${param.menu=="search"}) {
 					self.location = "/product/getProduct?prodNo="+prodNo+"&menu=search";
@@ -231,11 +245,11 @@ $(window).scroll(function() {
 	<div style="position:relative;float:right;width:210px;top:25px;right:55px;"> 
 		<div id="banner">
 			<span>최근에 본 상품</span>
-			<div id="" class="banner_contents">
+			<div  class="banner_contents">
 				<c:set var="i" value="0"/>
 			<c:forEach var="product" items="${cookieList}" end="5">
 					<c:set var ="i" value="${i+1 }"/>
-				<img src="/images/uploadFiles/${product.fileName}  " width="75" height="60"/>
+				<img src="/images/uploadFiles/${product.fileName}  " width="75" height="60" data-param4="${product.prodNo}"/>
 				</c:forEach>
 			</div>
 		</div>
@@ -301,7 +315,7 @@ $(window).scroll(function() {
 						    <div class="thumbnail-wrapper"> 
 							    <div class="thumbnail">
 								     <div class="centered">
-									      <img src="/images/uploadFiles/${product.fileName}  " data-param1="${product.prodNo}"/>
+									      <img src="/images/uploadFiles/${product.fileName}" data-param1="${product.prodNo}"/>
 	
 	      						</div>
 	      					</div>

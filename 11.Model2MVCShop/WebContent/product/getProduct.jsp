@@ -56,6 +56,22 @@
 		
 	});
 	
+	$(function() {
+		
+		$(".banner_contents img").on("click" , function(){
+			var prodNo = $(this).data("param4");
+			if ( ${param.menu=="search"}) {
+				self.location = "/product/getProduct?prodNo="+prodNo+"&menu=search";
+			};
+
+			if ( ${param.menu=="manage"}) {
+				self.location = "/product/updateProduct?prodNo="+prodNo+"&menu=manage";
+			};
+			});
+		});
+
+	
+	
 	$(window).scroll(function() { 
 		$('#banner').animate({top:$(window).scrollTop()+"px" },{queue: false, duration: 500});
 	}); 
@@ -75,7 +91,7 @@
 				<c:set var="i" value="0"/>
 			<c:forEach var="product" items="${map}" end="5">
 					<c:set var ="i" value="${i+1 }"/>
-				<img src="/images/uploadFiles/${product.fileName}  " width="75" height="60"/>
+				<img src="/images/uploadFiles/${product.fileName}  " width="75" height="60" data-param4="${product.prodNo}"/>
 				</c:forEach>
 			</div>
 		</div>

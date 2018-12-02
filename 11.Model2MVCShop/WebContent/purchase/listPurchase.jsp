@@ -37,12 +37,12 @@ function fncGetPageList(currentPage) {
 
 $(function() {
 	
-	 $(".ct_list_pop td:nth-child(1) ").on("click" , function(){ 
+	 $("tr td:nth-child(1) ").on("click" , function(){ 
 		var tranNo = $(this).data("param");
 			self.location = "/purchase/getPurchase?tranNo="+tranNo ;
 		});
 	 
-	 $(".ct_list_pop td:nth-child(3) ").on("click" , function(){ 
+	 $("tr td:nth-child(2) ").on("click" , function(){ 
 			var tranNo = $(this).data("param1");
 				self.location = "/user/getUser?userId=" ;
 			});
@@ -92,8 +92,8 @@ $(function() {
 		<c:forEach var="purchase" items="${list}">
 			<c:set var="i" value="${ i+1 }" />
 			<tr>
-			  <td align="center">${ i }</td>
-			  <td align="left"  data-param="${purchase.tranNo }">${user.userId}</td>
+			  <td align="center" data-param="${purchase.tranNo }">${ i }</td>
+			  <td align="left"  data-param1="${purchase.tranNo }">${user.userId}</td>
 			  <td align="left">${purchase.receiverName }</td>
 			  <td align="left">${purchase.purchaseProd.prodName}</td>
 			    <td align="left">${purchase.receiverPhone }</td>
